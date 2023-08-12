@@ -17,18 +17,31 @@
                         @endforeach
                     </select>
                 </td>
+                @if($errors->has('book_name') || $errors->has('book_url'))
+                    <td></td>
+                @endif
             </tr>
             <tr>
                 <th>本のタイトル</th>
                 <td>
                     <input type="text"name="book_name">
                 </td>
+                @if($errors->has('book_name'))
+                    <td>
+                        {{$errors->first('book_name')}}
+                    </td>
+                @endif
             </tr>
             <tr>
                 <th>URL</th>
                 <td>
                     <input type="text"name="book_url">
                 </td>
+                @if($errors->has('book_url'))
+                    <td>
+                        {{$errors->first('book_url')}}
+                    </td>
+                @endif
             </tr>
         </table>
         <input id="submit"type="submit"value="新規登録"style="background-color:rgba(255,150,0,0.8);">

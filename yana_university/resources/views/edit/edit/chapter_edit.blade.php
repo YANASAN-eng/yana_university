@@ -9,6 +9,9 @@
             <tr>
                 <th>ID</th>
                 <td><input name="chapter_id"type="text"value="{{$id}}"readonly></td>
+                @if($errors->has('chapter_name'))
+                    <td></td>
+                @endif
             </tr>
             <tr>
                 <th>本のタイトル</th>
@@ -21,15 +24,23 @@
                         @endforeach
                     </select>
                 </td>
+                @if($errors->has('chapter_name'))
+                    <td></td>
+                @endif
             </tr>
             <tr>
                 <th>章のタイトル</th>
                 <td>
                     <input type="text"name="chapter_name">
                 </td>
+                @if($errors->has('chapter_name'))
+                    <td>
+                        {{$errors->first('chapter_name')}}
+                    </td>
+                @endif
             </tr>
         </table>
-        <input type="submit"value="編集画面"style="background-color:rgba(255,0,0,0.5);">
+        <input type="submit"value="編集実行"style="background-color:rgba(255,0,0,0.5);">
         <input id="back_btn"type="button"value="戻る"style="background-color:rgba(200,200,200,0.8);;">
     </form>
 @endsection

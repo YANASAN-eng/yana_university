@@ -8,15 +8,18 @@ use App\Models\Subject;
 use App\Models\Book;
 use App\Models\Chapter;
 use App\Models\Section;
+use App\Http\Requests\BookRequest;
+use App\Http\Requests\ChapterRequest;
+use App\Http\Requests\SectionRequest;
 
 class DatasController extends Controller
 {
     //データを出力
     public function dataShow(Request $request){
         $subjects = Subject::all();
-        $books = Book::simplePaginate(3,["*"],'book-page');
-        $chapters = Chapter::simplePaginate(3,["*"],'chapter-page');
-        $sections = Section::simplePaginate(3,["*"],'section-page');
+        $books = Book::paginate(10,["*"],'book-page');
+        $chapters = Chapter::paginate(10,["*"],'chapter-page');
+        $sections = Section::paginate(10,["*"],'section-page');
         $book_titles = Book::pluck('book_name');
         $chapter_titles = Chapter::pluck('chapter_name');
         $section_titles = Section::pluck('section_name');
@@ -52,7 +55,7 @@ class DatasController extends Controller
         ]);
     }
     //本タイトル新規登録実行
-    public function bookSignUp(Request $request){
+    public function bookSignUp(BookRequest $request){
         $id = Book::max('id') + 1;
         DB::table('books')
         ->insert([
@@ -64,7 +67,7 @@ class DatasController extends Controller
         return redirect('/book/sign_up');
     }
     //章タイトル新規登録実行
-    public function chapterSignUp(Request $request){
+    public function chapterSignUp(ChapterRequest $request){
         $id = Chapter::max('id') + 1;
         DB::table('chapters')
         ->insert([
@@ -75,7 +78,7 @@ class DatasController extends Controller
         return redirect('/chapter/sign_up');
     }
     //節タイトル新規登録実行
-    public function sectionSignUp(Request $request){
+    public function sectionSignUp(SectionRequest $request){
         $id = Section::max('id') + 1;
         DB::table('sections')
         ->insert([
@@ -173,7 +176,7 @@ class DatasController extends Controller
         ]);
     }
     //本のタイトルの編集
-    public function bookEdit(Request $request){
+    public function bookEdit(BookRequest $request){
         DB::table('books')
         ->where('id',$request->book_id)
         ->update([
@@ -184,7 +187,7 @@ class DatasController extends Controller
         return redirect('/list');
     }
     //章のタイトルの編集
-    public function chapterEdit(Request $request){
+    public function chapterEdit(ChapterRequest $request){
         DB::table('chapters')
         ->where('id',$request->chapter_id)
         ->update([
@@ -194,7 +197,7 @@ class DatasController extends Controller
         return redirect('/list');
     }
     //節のタイトルの編集
-    public function sectionEdit(Request $request){
+    public function sectionEdit(SectionRequest $request){
         DB::table('sections')
         ->where('id',$request->section_id)
         ->update([

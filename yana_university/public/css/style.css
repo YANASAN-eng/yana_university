@@ -17,10 +17,12 @@
 }
 body{
   width:100%;
+  padding-top:70px;
+  padding-bottom:70px;
   background-color:rgba(0,150,255,0.6);
 }
 header{
-  height:70px;
+  height:95px;
   width:inherit;
   position:fixed;
   top:0;
@@ -34,11 +36,41 @@ header{
 .header_logo img{
   height:100%;
 }
-.header_menus{
+.zundamon_voice{
   float:right;
+  height:100%;
 }
+.zundamon_voice img{
+  float:right;
+  height:100%;
+}
+.zundamon_voice h3{
+  float:left;
+  position: relative;
+  padding: 1rem 1rem 1rem 1.5rem;
+  border-radius: 30px;
+  background-color:rgb(0,255,0);
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+.zundamon_voice h3:before{
+  position: absolute;
+  top: 53%;
+  left: 246px;
+  height: 0;
+  width: 0;
+  transform: skew(-5deg);
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: rgb(0,255,0);
+  border-width: 8px;
+  content: "";
+}
+
 .main_wrapper{
   margin-top:100px;
+  margin-bottom:200px;
 }
 footer{
   height:70px;
@@ -76,4 +108,10 @@ table th{
 }
 table td{
   border:1px solid rgba(0,0,0,0.6);
+}
+h1{
+  color:rgba(255,100,0,0.8);
+}
+.pagination li{
+    display: inline-block;
 }

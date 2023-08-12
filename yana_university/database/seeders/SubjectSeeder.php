@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Subject
+use App\Models\Subject;
 
 class SubjectSeeder extends Seeder
 {
@@ -28,6 +28,10 @@ class SubjectSeeder extends Seeder
         Subject::create([
             'subject_name' => 'イラスト創作',
             'subject_url' => '/math',
+        ]);
+        Subject::create([
+            'subject_name' => '生物学',
+            'subject_url' => '/biology',
         ]);
     }
 }

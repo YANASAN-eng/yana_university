@@ -19,8 +19,8 @@
             </div>
         </header>
         <div class="main_wrapper">
-            <div class="introduction_wrapper">@yield('introduction')</div>
             <div class="contents_wrapper">@yield('contents')</div>
+            <div class="introduction_wrapper">@yield('introduction')</div>
             <div class="form_wrapper">@yield('form')</div>
         </div>
         <footer>

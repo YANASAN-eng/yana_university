@@ -4,7 +4,29 @@
         <meta charset="utf-8">
         <title>@yield('title')</title>
         <link rel="stylesheet"href="{{asset('css/style.css')}}">
+        <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <script typr="text/javascript"src="{{asset('js/config.js')}}"></script>
         @yield('style')
+        <style>
+            .contents_wrapper{
+                float:left;
+                height:50%;
+                width:25%;
+                overflow:scroll;
+                position:absolute;
+                top:100px;
+                left:0px;
+                position:fixed;
+                background-color:rgba(255,255,0,0.5);
+            }
+            .sentences_wrapper{
+                float:right;
+                height:100%;
+                width:75%;
+                overflow:scroll;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -20,7 +42,10 @@
         </header>
         <div class="main_wrapper">
             <div class="introduction_wrapper">@yield('introduction')</div>
-            <div class="contents_wrapper">@yield('contents')</div>
+            <div class="clearfix">
+                <div class="contents_wrapper">@yield('contents')</div>
+                <div class="sentences_warapper">@yield('sentences')</div>
+            </div>
             <div class="form_wrapper">@yield('form')</div>
         </div>
         <footer>

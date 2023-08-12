@@ -17,12 +17,20 @@
                         @endforeach
                     </select>
                 </td>
+                @if($errors->has('section_name'))
+                    <td></td>
+                @endif
             </tr>
             <tr>
                 <th>節のタイトル</th>
                 <td>
                     <input type="text"name="section_name">
                 </td>
+                @if($errors->has('section_name'))
+                    <td>
+                        {{$errors->first('section_name')}}
+                    </td>
+                @endif
             </tr>
         </table>
         <input id="submit"type="submit"value="新規登録"style="background-color:rgba(255,150,0,0.8);">

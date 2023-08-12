@@ -9,6 +9,9 @@
             <tr>
                 <th>ID</th>
                 <td><input name="section_id"type="text"value="{{$id}}"readonly></td>
+                @if($errors->has('section_name'))
+                    <td></td>
+                @endif
             </tr>
             <tr>
                 <th>章のタイトル</th>
@@ -27,6 +30,11 @@
                 <td>
                     <input type="text"name="section_name">
                 </td>
+                @if($errors->has('section_name'))
+                    <td>
+                        {{$errors->first('section_name')}}
+                    </td>
+                @endif
             </tr>
         </table>
         <input id="edit_btn"type="submit"value="編集実行"style="background-color:rgba(255,0,0,0.5);">
