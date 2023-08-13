@@ -86,7 +86,62 @@ class YanaUniversityController extends Controller
             Book::where('book_name','=','線形代数学')
             ->first()->id)->get();
         $sections = Section::get();
-        return view('math.set_topology',[
+        return view('math.linear',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //解析学
+    public function analysisShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','解析学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('math.analysis',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //ベクトル解析
+    public function vectorShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','ベクトル解析学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('math.vector',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //テンソル解析
+    public function tensorShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','テンソル解析学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('math.tensor',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //位相幾何学
+    public function topologyShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','位相幾何学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('math.topology',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //微分幾何学
+    public function differentialGeometryShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','微分幾何学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('math.differential_geometry',[
             'chapters' => $chapters,
             'sections' => $sections,
         ]);
@@ -102,5 +157,262 @@ class YanaUniversityController extends Controller
             'sections' => $sections,
         ]);
     }
+    //整数論
+    public function numberTheoryShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','整数論')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('math.number_theory',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //グラフ理論
+    public function graphShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','グラフ理論')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('math.graph',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //組み合わせ論
+    public function comibinatoricsShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','組み合わせ論')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('math.combinatorics',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
 
+    //力学
+    public function mechanicsShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','力学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.mechanics',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //電磁気学
+    public function electromagnetismShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','電磁気学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.electromagnetism',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //解析力学
+    public function analyticMechanicsShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','解析力学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.analytic_mechanics',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //熱・統計力学
+    public function thermalStatisticalMechanicShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','熱・統計力学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.thermal_statical_mechanics',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //相対性理論
+     public function relativityShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','相対性理論')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.relativity',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //量子力学
+     public function quantumMechanicsShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','量子力学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.quantum_mechanics',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //場の理論
+     public function fieldTheoryShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','場の理論')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.field_theory',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //流体力学
+    public function fulidMechanicsShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','流体力学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.fulid_mechanics',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //素粒子物理学
+    public function particleShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','素粒子物理学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.particle',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //固体物理学
+    public function solidShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','固体物理学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.solid',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //塑性力学
+    public function plasticMechanicsShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','塑性力学')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('physics.plastic_mechanics',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+
+
+
+    //C言語
+    public function cShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','C言語')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.c',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //Java
+    public function javaShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','java')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.java',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //python
+    public function pythonShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','python')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.python',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //HTML&CSS
+    public function htmlCssShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','HTML&CSS')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.html_css',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //PHP
+    public function phpShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','PHP')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.php',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //javascript
+    public function javascriptShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','JavaScript')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.javascript',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //laravel
+    public function laravelShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','laravel')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.laravel',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+
+    //物語の生み出し方
+    public function createStoryMethodShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','物語の生み出し方')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('illust.create_story_method',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //作画法
+    public function drawingMethodShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','作画法')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('illust.drawing_method',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
 }

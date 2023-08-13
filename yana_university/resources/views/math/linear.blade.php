@@ -1,3 +1,3 @@
-@extends('layouts.lesson_tamplate')
+@extends('layouts.lesson_template')
 
 
