@@ -29,10 +29,9 @@
                 left:25%;
                 overflow:scroll;
             }
-            li{
-                color:rgba(0,0,255,0.9);
+            .contents_wrapper{
+                color:rbga(0,0,0,0.5);
             }
-            
         </style>
     </head>
     <body>

@@ -1,6 +1,7 @@
 window.MathJax = {
     chtml: {
-      matchFontHeight: false
+      matchFontHeight: false,
+      displayAlign:"left",
     },
     tex: {
       inlineMath: [['$', '$']]
