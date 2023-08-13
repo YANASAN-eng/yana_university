@@ -19,7 +19,7 @@ body{
   width:100%;
   padding-top:70px;
   padding-bottom:70px;
-  background-color:rgba(0,150,255,0.6);
+  background-color:rgba(0,150,255,0.8);
 }
 header{
   height:95px;
@@ -86,7 +86,7 @@ footer{
 }
 .footer_menus{
   float:right;
-  color:rgba(255,255,255,0.9);
+  color:rgba(255,255,255,0.9) !important;
 }
 .footer_menus ul li{
   list-style:none;
@@ -110,7 +110,13 @@ table td{
   border:1px solid rgba(0,0,0,0.6);
 }
 h1{
+  color:rgba(255,50,0,0.9);
+}
+h2{
   color:rgba(255,100,0,0.8);
+}
+h3{
+  color:rgba(200,200,0,1);
 }
 .pagination li{
     display: inline-block;

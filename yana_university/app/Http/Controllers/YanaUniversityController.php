@@ -152,7 +152,7 @@ class YanaUniversityController extends Controller
             Book::where('book_name','=','複素解析学')
             ->first()->id)->get();
         $sections = Section::get();
-        return view('math.set_topology',[
+        return view('math.complex_anlysis',[
             'chapters' => $chapters,
             'sections' => $sections,
         ]);
