@@ -725,8 +725,70 @@
                 \end{align*}
             </p>
             <p>証明</p>
-
+            <p>[(i)]$\int\int_{\mathscr{D}}\frac{\partial Q}{\partial x}dxdy
+                =\int_{\partial \mathscr{D}}Qdy$</p>
+            <p>
+                $\partial \mathscr{D}$に接するx軸に平行な2直線$l_{1},l_{2}$で
+                $C_{1} \cap C_{2} = \partial \mathscr{D}$の様に分割する．ただし，
+                y成分が同一で$x$成分が小さい方を$C_{1}$大きい方を$C_{2}$とする．
+                また，$l_{1}$とy軸の交点のy成分をc,$l_{2}$とy軸との交点のy成分を
+                dとする．そして，y成分の大きさが$y \in [c,d]$を満たすx軸に平行な
+                直線lを描き，$C_{1},C_{2}$との交点の座標を$(x_1(y),y),(x_2(y),y)$とする．
+                すると，次の様に計算できる．
+                \begin{align*}
+                    \int\int_{\mathscr{D}}\frac{\partial Q}{\partial y}dxdy &= 
+                    \int_{c}^{d}\{Q(x_{2}(y),y) - Q(x_{1}(y),y)\}dy\\
+                    &=\int_{\partial \mathscr{D}}Q(x(y),y)dy
+                \end{align*}
+            </p>
+            <p>
+                [(ii)]$\int\int_{\mathscr{D}}\frac{\partial P}{\partial y}dxdy
+                =-\int_{\partial \mathscr{D}}Pdx$
+            </p>
+            <p>
+                $\partial \mathscr{D}$に接するy軸に平行な2直線$l_{1},l_{2}$で
+                $C_{1} \cap C_{2} = \partial \mathscr{D}$の様に分割する．ただし，
+                x成分が同一で$y$成分が小さい方を$C_{1}$大きい方を$C_{2}$とする．
+                また，$l_{1}$とx軸の交点のx成分をa,$l_{2}$とx軸との交点のx成分を
+                bとする．そして，x成分の大きさが$x \in [a,b]$を満たすy軸に平行な
+                直線lを描き，$C_{1},C_{2}$との交点の座標を$(x,y_{1}(x)),(x,y_{2}(x))$とする．
+                すると，次の様に計算できる．
+                \begin{align*}
+                    \int\int_{\mathscr{D}}\frac{\partial P}{\partial x}dxdy &= 
+                    \int_{c}^{d}\{P(x,y_{2}(x)) - P(x,y_{1}(x))\}dx\\
+                    &=-\int_{\partial \mathscr{D}}P(x,y(x))dy
+                \end{align*}
+            </p>
             <p>Q.E.D.</p>
+            <p>
+                $\int_{\partial \mathscr{D}}f(z)dz = 2i\int\int_{\mathscr{D}}\frac{\partial f}{\partial \bar{z}}dxdy$
+                の証明
+            </p>
+            <p>
+                $f = u + iv,z = x + iy,dz = dx + idy$とおく．すると次のように計算できるので
+                証明完了．
+                \begin{align*}
+                    \int_{\partial \mathscr{D}}fdz &=
+                    \int_{\partial \mathscr{D}}(u + iv)(dx + idy)\\
+                    &= 
+                    \int{\partial \mathscr{D}}\{
+                            (u+iv)dx+i(u+iv)dy
+                        \}\\
+                    &=
+                    \int\int_{\mathscr{D}}\{i\frac{\partial (u + iv)}{\partial x}
+                    -\frac{\partial (u + iv)}{\partial y}\}dxdy\\
+                    &= 
+                    2i\int\int_{\mathscr{D}}\frac{1}{2}\{
+                            (\frac{\partial (u + iv)}{\partial x} + i\frac{\partial (u + iv)}{\partial y})
+                        \}dxdy\\
+                    &=
+                    2i \int\int_{\mathscr{D}} \frac{\partial f}{\partial \bar{z}}
+                \end{align*}
+            </p>
+            <p>
+                Q.E.D.
+            </p>
+            
         </div>
     </div>
     
