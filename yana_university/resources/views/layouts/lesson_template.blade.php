@@ -32,6 +32,12 @@
             .contents_wrapper{
                 color:rbga(0,0,0,0.5);
             }
+            .chapter{
+                display:none;
+            }
+            .section{
+                display:none;
+            }
         </style>
     </head>
     <body>

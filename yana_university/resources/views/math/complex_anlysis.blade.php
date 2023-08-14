@@ -291,8 +291,441 @@
                 証明.
             </p>
             <p>
-                f=u+iv,z=x+iy,$z_{0}=x_{0}+iy_{0}$とおきます．
+                f=u+iv,$f|_{z_{0}} = u_{0} + i v_{0}$,z=x+iy,$z_{0}=x_{0}+iy_{0}$とおきます．
             </p>
+            <p>
+                \begin{align*}
+                    \left\{
+                        \begin{array}{l}
+                            \frac{\partial f}{\partial z} =
+                            \frac{1}{2}\{
+                                    (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y})
+                                    + i(-\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})
+                                \}\\
+                            \frac{\partial f}{\partial \bar{z}} = 
+                            \frac{1}{2}\{
+                                (\frac{\partial u}{\partial x} - \frac{\partial v}{\partial y})
+                                    + i(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})
+                                \}
+                        \end{array}
+                    \right.
+                \end{align*}
+            </p>
+            <p>
+            \begin{align*}
+                &(\frac{\partial f}{\partial z})_{z_0}(z - z_{0})
+                + (\frac{\partial f}{\partial \bar{z}})_{z_{0}}(\bar{z} - \bar{z_{0}})
+                + o(|z - z_{0}|)\\
+                &= \frac{1}{2}\{
+                        (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y})
+                        + i (-\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})
+                    \}\{(x - x_{0}) + i (y - y_{0})\}\\
+                &+ 
+                \frac{1}{2}\{
+                        (\frac{\partial u}{\partial x} - \frac{\partial v}{\partial y})
+                        + i (\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})
+                    \}\{(x - x_{0}) - i (y - y_{0})\}\\
+                &=
+                (\frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x})(x - x_{0})
+                +(\frac{\partial u}{\partial y} + i \frac{\partial v}{\partial y})(y - y_{0})\\
+                &=
+                \frac{\partial f}{\partial x}(z - z_{0}) + \frac{\partial f}{\partial y}(y - y_{0})
+            \end{align*}
+            </p>
+            <p>
+                またu,vは$C^{1}$級なので，次式が成り立つ．
+                \begin{align*}
+                    \left\{
+                        \begin{array}{l}
+                            u = u_{0} + \frac{\partial u}{\partial x}(x - x_{0}) + \frac{\partial u}{\partial y}(y - y_{0}) + o(|z - z_{0}|)\\
+                            v = v_{0} + \frac{\partial v}{\partial x}(x - x_{0}) + \frac{\partial v}{\partial y}(y - y_{0}) + o(|z - z_{0}|)
+                        \end{array}
+                    \right.
+                \end{align*}
+            </p>
+            <p>
+                これから，次式を得る．
+                \begin{align*}
+                    u + iv &= (u_{0} + i v_{0}) + (\frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x})(x - x_{0})
+                    +(\frac{\partial u}{\partial y} + i \frac{\partial v}{\partial y})(y - y_{0}) + o(|z - z_{0}|)\\
+                    &=
+                    f(z_{0}) + \frac{\partial f}{\partial x}(x - x_{0})
+                    +\frac{\partial f}{\partial y}(y - y_{0}) + o(|z - z_{0}|)\\
+                    &=
+                    f(z_{0}) + (\frac{\partial f}{\partial z})_{z_0}(z - z_{0})
+                    + (\frac{\partial f}{\partial \bar{z}})_{z_{0}}(\bar{z} - \bar{z_{0}})
+                    + o(|z - z_{0}|)
+                    \end{align*}
+            </p>
+            <p>
+                よって証明完了．
+            </p>
+            <p>Q.E.D.</p>
+            <p>問一</p>
+            <p>
+                $w = f(z),z = \phi(t)$を$C^{1}$級関数とし，合成関数
+                $w = \f(\phi(t))$を考える.この時，次式が成り立つ．
+                \begin{align*}
+                    \frac{dw}{dt} =\frac{\partial w}{\partial z}\frac{dz}{dt}
+                                    +\frac{\partial w}{\partial \bar{z}}\frac{d \bar{z}}{dt}
+                \end{align*}
+            </p>
+            <p>証明</p>
+            <p>
+                $z = \phi(t)$は$C^{1}$級なので，次式が成り立つ．
+                \begin{align*}
+                    \phi(t + \Delta t) = \phi(t)+ \frac{d\phi(t)}{dt}\Delta t + o(|\Delta t|)
+                \end{align*}
+            </p>
+            <p>
+                補題2より，次式を得る．
+                \begin{align*}
+                    w(\phi(t + \Delta t)) &= 
+                    w(\phi(t)+ \frac{d\phi(t)}{dt}\Delta t + o(|\Delta t|))\\
+                    &=
+                    w(z + \frac{dz}{dt}\Delta t + o(|\Delta t|))\\
+                    &=
+                    w(z) + \frac{\partial w}{\partial z}\frac{dz}{dt}\Delta t 
+                    + \frac{\partial w}{\partial \bar{z}}\frac{d \bar{z}}{dt}\Delta t + o(\Delta t|) 
+                \end{align*}
+            </p>
+            <p>
+                ゆえに，次式が得られるので証明が完了した．
+                \begin{align*}
+                    \lim_{\Delta t \rightarrow 0}\frac{w(\phi(t + \Delta t)) - w(\phi(t))}{\Delta t} = 
+                    \frac{\partial w}{\partial z}\frac{dz}{dt} + \frac{\partial w}{\partial \bar{z}}\frac{d \bar{z}}{dt}
+                \end{align*}
+            </p>
+            <p>Q.E.D.</p>
+        </div>
+        <div class="section">
+            <h3>複素微分可能とコーシー・リーマンの方程式</h3>
+            <p>
+                以下，f(z)は定義域$\mathscr{D}$で定義された複素関数とします．
+            </p>
+            <p>
+                定義2.複素微分可能
+            </p>
+            <p>
+                f(z)が$z_{0} \in \mathscr{D}$で複素微分可能であるとは，
+                $z_{0}$の近傍Uと，Uでで意義され$z_{0}$で連続な関数
+                $\delta_{f}(z)$があり，次式が成立する事を言います．
+                \begin{align*}
+                    f(z) = f(z_{0}) + \delta_{f}(z - z_{0})
+                \end{align*}
+            </p>
+            <p>
+                ちなみに，$\delta_{f}(z_{0})$の事をf(z)の$z_{0}$で微分係数
+                といい，$f^{'}(z_{0})$や$(\frac{df}{dz})_{z_{0}}$などと書きます．
+            </p>
+            <p>問1</p>
+            <p>
+                f(z)が$z_{0}$で複素微分可能$\Leftrightarrow$定数$\alpha$が存在し，
+                $z \rightarrow z_{0}$のとき，$f(z) = f(z_{0}) + \alpha (z - z_{0})
+                + o(|z - z_{0}|)$
+            </p>
+            <p>証明．</p>
+            <p>[$\Rightarrow$]</p>
+            <p>
+                f(z)が$z_{0}$で複素微分可能とすると定義より，次式が成り立つ．
+                \begin{align*}
+                    f(z) &= f(z_{0}) + \delta_{f}(z - z_{0})\\
+                        &= f(z_{0}) + \alpha(z - z_{0}) + (\delta_{f} - \alpha)(z - z_{0})
+                \end{align*}
+            </p>
+            <p>
+                ここで，$\alpha = \lim_{z \rightarrow z_{0}}\delta_{f}(z)$
+                と置くと，任意の正数$\epsilon > 0$に対して，
+                ある正数$\delta$が存在し，$|z - z_{0}|< \epsilon$が成り立つ
+                任意の$z \in \mathscr{D}$に対し，$|\delta_{f}(z) - \alpha| < \epsilon$
+                が成り立つので，結局次式を得るので十分性は証明できた．
+                \begin{align*}
+                    f(z) = \alpha (z - z_{0}) + o(|z - z_{0}|)
+                \end{align*}
+            </p>
+            <p>[$\Leftarrow$]</p>
+            <p>
+               逆に定数$\alpha$が存在して，次式が成立したとする．
+               \begin{align*} 
+                    f(z) = \alpha (z - z_{0}) + o(|z - z_{0}|)
+               \end{align*}
+            </p>
+            <p>
+                この場合は，任意の正数$\epsilon > 0$に対して$z_{0}$の近傍$U - \{z_{0}\}$で
+                $|h(z)| \leq \epsilon |z - z_{0}|$を満たす複素関数h(z)が存在して，
+                次の様にかける．なので必要性も証明された．
+                \begin{align*}
+                    f(z) &= \alpha (z - z_{0}) + h(z)\\
+                    &= (\alpha + \frac{h(z)}{z - z_{0}})(z - z_{0})
+                \end{align*}
+            </p>
+            <p>Q.E.D.</p>
+            <p>補題3</p>
+            <p>
+                \begin{align*}
+                    &(i)f(z),g(z)がz_{0}で複素微分可能なら，\alpha f(z)(\alpha は定数)，
+                    f(z) + g(z),f(z)g(z)も複素微分可能で次の式が成り立つ．\\
+                    & \quad (\alpha f(z))^{'}_{z_{0}} = \alpha f^{'}(z_{0})\\
+                    & \quad (f(z) + g(z))^{'}_{z_{0}} = f^{'}(z_{0}) + g^{'}(z_{0})\\
+                    & \quad (f(z)g(z))^{'}_{z_{0}} = f^{'}(z_{0})g(z_{0}) + f(z_{0})g^{'}(z_{0})\\
+                    & \quad さらに，g(z_{0})　\not= 0ならば，\frac{f(z)}{g(z)}も複素微分可能で
+                    次式が成り立つ．\\
+                    & \quad (\frac{f(z)}{g(z)})^{'} = \frac{f^{'}(z_{0})g(z_{0}) - f(z_{0})g^{'}(z_{0})}{g(z_{0})^{2}}
+                    &(ii)
+                    f(z)がz_{0}で，g(w)がf(z_{0})で，g(w)がf(z_{0})で複素微分可能なら，
+                    g(f(z_{0}))はz_{0}で複素微分可能で次式が成り立つ．\\
+                    & \quad 
+                    (g(f(z)))^{'}_{z_{0}} = g^{'}(f(z_{0}))f^{'}(z_{0})
+                \end{align*}
+            </p>
+            <p>証明</p>
+            <p>[(i)]</p>
+            <p>
+                仮定より，次式が成り立つ．
+                \begin{align*}
+                    &f(z) = f(z_{0}) + \delta_{f}(z)(z - z_{0})\\
+                    &g(z) = g(z_{0}) + \delta_{g}(z)(z - z_{0})
+                \end{align*}
+            </p>
+            <p>
+                この事から，次式が成り立つ．
+                \begin{align*}
+                    &\alpha f(z) = \alpha f(z_{0}) + \alpha \delta_{f}(z)(z - z_{0})\\
+                    &f(z) + g(z) = f(z_{0}) + g(z_{0}) + \{\delta_{f}(z) + \delta_{g}\}(z - z_{0})\\
+                    &f(z)g(z) = f(z_{0})g(z_{0}) + \{f(z)\delta_{g}(z) + \delta_{f}(z)g(z)\}(z - z_{0}) + o(|z - z_{0}|)\\
+                    &\frac{1}{g(z)} = \frac{1}{g(z_{0}) + \delta_{g}(z)(z - z_{0})}\\
+                    &=\frac{1}{g(z_{0})}\frac{1}{1 + \frac{\delta_{g}(z)}{g(z_{0})}}\\
+                    &=\frac{1}{g(z_{0})} - \frac{\delta_{g}(z)}{g(z_{0})^{2}}
+                \end{align*}
+            </p>
+            <p>[(ii)]</p>
+            <p>
+                \begin{align*}
+                    g(f(z)) &= g(f(z_{0}) + \delta_{f}(z)(z - z_{0}))\\
+                    &= g(f(z_{0})) + \delta_{g}(f(z_{0} + \delta_{f}(z)(z - z_{0})))\delta_{f}(z)(z - z_{0}) + o(|z - z_{0}|)
+                \end{align*}
+            </p>
+            <p>Q.E.D.</p>
+            <p>定理1</p>
+            <p>
+                f(z)が$z_{0}$の近傍で$C^{1}$級ならば，f(z)が$z_{0}$で複素微分可能
+                $\Leftrightarrow (\frac{\partial f}{\partial \bar{z}})_{z_{0}} = 0$
+            </p>
+            <p>証明</p>
+            <p>
+                次の様に$\delta_{f}(z)$を定める．
+                \begin{align*}
+                    \delta_f(z) &= f(z) - f(z_{0})\\
+                    &= (\frac{\partial f}{\partial z})_{z_{0}} + (\frac{\partial f}{\partial \bar{z}})_{z_{0}}\frac{\bar{z} - \bar{z_{0}}}{z - z_{0}}
+                    + \frac{o(|z - z_{0})}{z - z_{0}}
+                \end{align*}
+            </p>
+            <p>[$\Leftarrow$]</p>
+            <p>
+                $\frac{\partial f}{\partial \bar{z}} = 0$であるとする．
+                すると次の事を得る．
+                \begin{align*}
+                    \lim_{z \rightarrow z_{0}}\delta_{f}(z) = (\frac{\partial f}{\partial z})_{z_{0}}
+                \end{align*}
+            </p>
+            <p>[$\Rightarrow$]</p>
+            <p>
+                対偶を示す．
+                $(\frac{\partial f}{\partial \bar{z}})_{z_{0}} \not= 0$であるとする．すると次の事が分かる．
+                $z_{n} = z_{0} + \frac{1}{n}$および，$z_{n}^{'} = z_{0} + \frac{i}{n}$
+                の様に定める．すると次の事が成り立つ．
+                \begin{align*}
+                    \left\{
+                        \begin{array}{l}
+                            \lim_{n \rightarrow \infty}\delta_{f}(z_{n}) = (\frac{\partial f}{\partial z})_{z_{0}} 
+                            + (\frac{\partial f}{\partial \bar{z}})_{z_{0}}\\
+                            \lim_{n \rightarrow \infty}\delta_{f}(z_{n}^{'}) = (\frac{\partial f}{\partial z})_{z_{0}} 
+                            - (\frac{\partial f}{\partial \bar{z}})_{z_{0}}\\
+                        \end{array}
+                    \right.
+                \end{align*}
+            </p>
+            <p>
+                よって，$(\frac{\partial f}{\partial \bar{z}})_{z_{0}} \not= 0$
+                が成り立つならば，微分不可能であることが示された．
+            </p>
+            <p>Q.E.D.</p>
+            <p>問2</p>
+            <p>
+                f(z)が複素微分可能なとき，$\frac{df}{dz} = \frac{\partial f}{\partial z}$
+                が分かったが，さらに次の式が成り立つ．
+                \begin{align*}
+                    \frac{df}{dz} = \frac{\partial f}{\partial x} = -i\frac{\partial f}{\partial y}
+                \end{align*}
+            </p>
+            <p>証明</p>
+            <p>
+                \begin{align*}
+                    \frac{df}{dz} &= \frac{1}{2}(\frac{\partial f}{\partial x} - i\frac{\partial f}{\partial y})\\
+                    &=
+                    \frac{1}{2}\{
+                            (\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y})
+                            + i (-\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})
+                        \}
+                \end{align*}
+            </p>
+            <p>
+                また，fは複素微分可能なので$\frac{\partial f}{\partial \bar{z}} = 0$．
+                ゆえに，次の式が成り立つ．
+                \begin{align*}
+                    \left\{
+                        \begin{array}{l}
+                            &\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}\\
+                            &\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+                        \end{array}
+                    \right.
+                \end{align*}
+            </p>
+            <p>
+                ゆえに，この事を用いる．すると次の事が得られる．
+                \begin{align*}
+                    \frac{df}{dz} = \frac{\partial f}{\partial x} = -i\frac{\partial f}{\partial y}
+                \end{align*}
+            </p>
+            <p>Q.E.D.</p>
+            <p>
+                系1.$|f^{'}(z_{0})|^{2}$は写像$(x,y) \mapsto (u,v)$の
+                ヤコビ行列式に等しい．
+                \begin{align*}
+                    \begin{vmatrix}
+                        \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}\\
+                        \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}\\
+                    \end{vmatrix}
+                \end{align*}
+            </p>
+            <p>証明</p>
+            <p>
+                \begin{align*}
+                    |\frac{df}{dz}|^{2} &= (\frac{\partial u}{\partial x})^{2} + (\frac{\partial v}{\partial x})^{2}\\
+                        &= \frac{\partial u}{\partial x}\frac{\partial v}{\partial y} - \frac{\partial u}{\partial y}\frac{\partial v}{\partial x}
+                \end{align*}
+            </p>
+            <p>Q.E.D.</p>
+            <p>問3</p>
+            <p>
+                f(z)が領域$\mathscr{D}$で$C^{1}$級で複素微分可能
+                とし，f(z)の値は常に実数とすると，f(z)は定数関数．
+            </p>
+            <p>証明</p>
+            <p>
+                f(z)が実関数なので，$\frac{\partial v}{\partial x} = \frac{\partial v}{\partial y} = 0$
+                またf(z)が複素微分可能なので，次の事が成り立つ．
+                \begin{align*}
+                    \left\{
+                        \begin{array}{l}
+                            \frac{\partial u}{\partial x} = 0\\
+                            \frac{\partial u}{\partial y} = 0
+                        \end{array}
+                    \right.
+                \end{align*}
+            </p>
+            <p>
+                よって$\frac{\partial u}{\partial x} = 0$よりあるyを変数とする
+                関数u(x,y) = h(y)が成り立つ．
+                また，$\frac{\partial u}{\partial y} = 0$より次の事が分かるので証明が完了する．
+                h(y) = A = const.
+            </p>
+            <p>Q.E.D.</p>
+            <p>定義3.複素微分可能</p>
+            <p>
+                f(z)が開集合$\mathscr{D}$において，$C^{1}$級であり，各点で複素微分可能であるとき，
+                f(z)は$\mathscr{D}$で正則と言います．
+            </p>
+            <p>正則関数の例1</p>
+            <p>
+                $z^{n}(n = 0,\pm 1,\pm 2,\pm 3,...)$は全平面(n < 0の時は，
+                原点を除く)で正則で$(z^{n})^{'} = n z^{n - 1}$
+            </p>
+            <p>証明</p>
+            <p>n=0の場合は明らか．</p>
+            <p>n=1の場合は次の事から明らか</p>
+            <p>
+                \begin{align*}
+                    \left\{
+                        \begin{array}{l}
+                            \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} = 1\\
+                            \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} = 0
+                        \end{array}
+                    \right.
+                \end{align*}
+            </p>
+            <p>
+                次に0,1,2,...,nまで成り立つと仮定する．すると$z^{n + 1}$の場合は
+                $z^{n + 1} = z \cdot z^{n}$とz,$z^{n}$が正則なので$z^{n + 1}$
+                も正則．
+            </p>
+            <p>
+                また，$\frac{1}{z} = \frac{x - iy}{x^{2} + y^{2}}$
+                より，
+                \begin{align*}
+                    \frac{\partial u}{\partial x} &= \frac{1}{x^{2}+y^{2}} - 2\frac{x^{2}}{(x^{2}+y^{2})^{2}}\\
+                    &= \frac{-x^{2} + y^{2}}{(x^{2} + y^{2})^{2}}\\
+                \end{align*}
+            </p>
+            <p>
+                \begin{align*}
+                    \frac{\partial v}{\partial y}
+                    &=
+                    -\frac{1}{x^{2} + y^{2}} +2\frac{y^{2}}{(x^{2} + y^{2})^{2}}\\
+                    &=
+                    \frac{-x^{2} + y^{2}}{(x^{2} + y^{2})^{2}}\\
+                    &=
+                    \frac{\partial u}{\partial x}
+                \end{align*}
+            </p>
+            <p>
+                \begin{align*}
+                    \frac{\partial u}{\partial y} 
+                    &=
+                    -2\frac{xy}{(x^{2} + y^{2})}\\
+                \end{align*}
+            </p>
+            <p>
+                \begin{align}
+                    -\frac{\partial v}{\partial x}
+                    &= -2\frac{xy}{(x^{2} + y^{2})}
+                \end{align}
+            </p>
+            <p>
+                より，$\frac{1}{z}$は原点を除いて，コーシー・リーマン方程式を
+                満たす．ゆえに$\frac{1}{z}$は正則関数．
+            </p>
+            <p>
+                次に-1,-2,-3,...,-nまで正しいとすると，$z^{-1},z^{-n}$が正則
+                なので，$z^{-(n + 1)} = z^{-1}\cdot  z^{-n}$は正則．
+            </p>
+            <p>Q.E.D.</p>
+        
+        </div>
+        <div class="section">
+            <h3>コーシーの積分公式</h3>
+            この節では，f(z)は開集合$\tilde{\mathscr{D}}(\subset C)$で$C^{1}$
+            級とし，$\mathscr{D}$は$\bar{\mathscr{D}} \subset \tilde{\mathscr{D}}$
+            となる有界領域で境界$\partial D$は有限個の正則ジョルダン閉曲線の和であると
+            します．
+            この時，次式が成り立つ．
+            \begin{align*}
+                \int_{\partial \mathscr{D}}f(z)dz 
+                = 2i \int\int_{\mathscr{D}}\frac{\partial f}{\partial \bar{z}}dxdy
+            \end{align*}
+            <p>補題4.グリーンの定理</p>
+            <p>$P(x,y),Q(x,y)$を領域$\mathscr{D} \subset \mathbb{R}^{2}$で
+                2変数の$C^{1}$級の関数であるとする．
+                すると次式が成り立つ．
+                \begin{align*}
+                    \int\int_{\mathscr{D}}(\frac{\partial Q(x,y)}{\partial x}
+                     - \frac{\partial P(x,y)}{\partial y})dxdy 
+                    =
+                    \int_{\partial \mathscr{D}}(P(x,y(x))dx + Q(x(y),y)dy)
+                \end{align*}
+            </p>
+            <p>証明</p>
+
             <p>Q.E.D.</p>
         </div>
     </div>
