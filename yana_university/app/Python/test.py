@@ -23,8 +23,12 @@ for i in range(m):
                 A[i][j].image = float(mat[i][j].split("+i")[1])
         elif('-i' in mat[i][j]):
             if(mat[i][j].split("-i")[0] == ''):
-                A[i][j].real = 0
-                A[i][j].image = -float(mat[i][j].split("-i")[1])
+                if(mat[i][j].split('-i')[1] == ''):
+                    A[i][j].real = 0
+                    A[i][j].image = -1
+                else:
+                    A[i][j].real = 0
+                    A[i][j].image = -float(mat[i][j].split("-i")[1])
             else:
                 if(mat[i][j].split('-i')[1] == ''):
                     A[i][j].real = float(mat[i][j].split("-i")[0])

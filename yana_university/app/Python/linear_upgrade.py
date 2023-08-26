@@ -248,7 +248,7 @@ class Linear:
                     x[i][0] = R[count + i][count]
                 for i in range(n - count):
                     if(i == 0):
-                        y[i][0] = Comp(cls.norm(x),0)
+                        y[i][0] = Comp.times(Comp.argument(x[0][0]),Comp(cls.norm(x),0))
                     else:
                         y[i][0] = Comp(0,0)
                     u[i][0] = Comp.add(x[i][0],Comp.minus(y[i][0]))
@@ -267,7 +267,7 @@ class Linear:
                     x[i][0] = R[count + i][count]
                 for i in range(n - count):
                     if(i == 0):
-                        y[i][0] = Comp(cls.norm(x),0)
+                        y[i][0] = Comp.times(Comp.argument(x[0][0]),Comp(cls.norm(x),0))
                     else:
                         y[i][0] = Comp(0,0)
                     u[i][0] = Comp.add(x[i][0],Comp.minus(y[i][0]))
