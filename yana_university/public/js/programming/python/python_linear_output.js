@@ -1,0 +1,1 @@
+let type = document.getElementById('type_of_matrix').style.display = "none";

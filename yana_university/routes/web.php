@@ -95,6 +95,8 @@ Route::get('/math/number_theory','App\Http\Controllers\YanaUniversityController@
 Route::get('/math/graph','App\Http\Controllers\YanaUniversityController@graphShow');
 //組み合わせ論
 Route::get('/math/combinatorics','App\Http\Controllers\YanaUniversityController@comibinatoricsShow');
+//コーヒーブレイク
+Route::get('/math/coffee_break','App\Http\Controllers\YanaUniversityController@mathCoffeeBreakShow');
 
 
 //力学
@@ -126,6 +128,10 @@ Route::get('/programming/c','App\Http\Controllers\YanaUniversityController@cShow
 Route::get('/programming/java','App\Http\Controllers\YanaUniversityController@javaShow');
 //python
 Route::get('/programming/python','App\Http\Controllers\YanaUniversityController@pythonShow');
+//python_linear
+Route::get('/programming/python/linear','App\Http\Controllers\YanaUniversityController@pythonLinearShow');
+//python_linear_output
+Route::get('/programming/python/linear/output','App\Http\Controllers\YanaUniversityController@pythonLinearOutput');
 //HTML&CSS
 Route::get('/programming/html&css','App\Http\Controllers\YanaUniversityController@htmlCssShow');
 //PHP
@@ -134,15 +140,19 @@ Route::get('/programming/php','App\Http\Controllers\YanaUniversityController@php
 Route::get('/programming/javascript','App\Http\Controllers\YanaUniversityController@javascriptShow');
 //laravel
 Route::get('/programming/laravel','App\Http\Controllers\YanaUniversityController@laravelShow');
+//comiler
+Route::get('/programming/compiler','App\Http\Controllers\YanaUniversityController@compilerShow');
+//docker
+Route::get('/programming/docker','App\Http\Controllers\YanaUniversityController@dockerShow');
+//プログラミング言語を自作
+Route::get('/programming/making_language','App\Http\Controllers\YanaUniversityController@makingLanguageShow');
+//情報基礎論
+ROute::get('/programming/information','App\Http\Controllers\YanaUniversityController@informationShow');
 
 //物語の生み出し方
 Route::get('/illust/story','App\Http\Controllers\YanaUniversityController@createStoryMethodShow');
 //イラスト創作
 Route::get('/illust/drawing','App\Http\Controllers\YanaUniversityController@drawingMethodShow');
-
-
-
-
 
 
 

@@ -788,7 +788,161 @@
             <p>
                 Q.E.D.
             </p>
-            
+            <p>
+                $z_{0} \in \mathscr{D}$とし，$\epsilon > 0$を小さくとって中心が$z_{0}$
+                で半径$\epsilon$の円を$\Delta_{\epsilon}$とする．そして，$\frac{f(z)}{z - z_{0}}$
+                に対し，$\mathscr{D} \backslash \Delta_{epsilon}$で
+                グリーンの定理を用いると次式を得る．
+                \begin{align*}
+                    \int_{\partial \mathscr{D}}\frac{f(z)}{z - z_{0}}dz
+                    -\int_{\partial \Delta_{\epsilon}}\frac{f(z)}{z - z_{0}}dz\\
+                    =
+                    2i\int\int_{\mathscr{D} \backslash \Delta_{\epsilon}}\frac{\partial}{\partial \bar{z}}
+                    \{\frac{f(z)}{z - z_{0}}\}dxdy
+                \end{align*}
+            </p>
+            <p>
+                $\Delta_{\epsilon}$は$z = z_{0} + \epsilon e^{it}　(0 \leq t \leq 2\pi)$
+                と助変数表示できるので，これを用いると次式を得る．
+                \begin{align*}
+                    \int_{\partial \Delta_{\epsilon}}\frac{f(z)}{z - z_{0}}dz
+                    &=
+                    i\int_{0}^{2\pi}f(z_{0} + \epsilon e^{it})dt\\
+                    &\rightarrow
+                    i\int_{0}^{2\pi}f(z_{0})dt = i2\pi f(z_{0})
+                \end{align*}
+            </p>
+            <p>
+                ここで$\frac{1}{z - z_{0}}$は$z \not= z_{0}$で正則なので，
+                $\frac{\partial}{\partial \bar{z}}$を施すと0になるので次の
+                式が得られる．
+                \begin{align*}
+                    f(z_{0}) = \frac{1}{2 \pi i}\int_{\partial \mathscr{D}}\frac{f(z)}{z - z_{0}}dz
+                    -\frac{1}{\pi}\int\int_{\mathscr{D} \backslash \Delta_{\epsilon}}\frac{1}{z - z_{0}}\frac{\partial f(z)}{\partial \bar{z}}dxdy
+                \end{align*}
+            </p>
+            <p>
+                上で導いた結果をまとめます．
+            </p>
+            <p>補題5</p>
+            <p>
+                任意の$z \in \mathscr{D}$に対し，次式が成り立つ．
+                \begin{align*}
+                    f(z) = \frac{1}{2\pi i}\int_{\partial \mathscr{D}}\frac{f(\zeta)}{\zeta - z}d\zeta
+                    - \frac{1}{\pi}\int\int_{\mathscr{D} \backslash \Delta_{\epsilon}}\frac{1}{\zeta - z}\frac{\partial f(\zeta)}{\partial \bar{z}}d\xi d\eta
+                \end{align*}
+            </p>
+            <p>定理2</p>
+            <p>
+                f(z)は開集合$\tilde{\mathscr{D}}$で正則とする．有界領域$\mathscr{D}$
+                を$\bar{\mathscr{D}} \subset \tilde{\mathscr{D}}$を満たし，$\partial \mathscr{D}$
+                は有限個の正則ジョルダン閉曲線からできているものとする．その時，次式が
+                成り立つ．
+                \begin{align*}
+                    &(i)\int_{\partial \mathscr{D}}f(z)dz = 0\\
+                    &(ii)任意のz \in \mathscr{D}に対して，f(z) = \frac{1}{2\pi i}\int_{\partial \mathscr{D}}\frac{f(\zeta)}{\zeta - z}d\zeta
+                \end{align*}
+            </p>
+            <p>
+                問題
+            </p>
+            <p>
+                楕円の周$\frac{x^{2}}{4}+y^{2}=1$をCとし，Cの向きを
+                反時計回りとして，$\int_{C}\frac{2z}{z^{2}-1}dz$を
+                計算せよ！
+            </p>
+            <p>[解]</p>
+                $z = \pm 1$を中心とする半径$\epsilon$の円$\Delta_{\pm}$を考え，下記図の様な積分路
+                $C^{'} = \overparen{HA} \cup \overparen{AB} 
+                \cup \epsilon_{+} \cup \overparen{CD} \cup \overparen{DE} 
+                \cup \overparen{EF} \cup \epsilon_{-} \cup \overparen{GH}$を考える．すると，積分路$C^{'}$
+                内で与えられた積分の被積分関数は正則なので，$C^{'}$上では積分値は0
+                次に，線分AB,線分CDおよび線分EF,線分GHを近づける事で，これらは打消し合い次式を得る．
+                \begin{align*}
+                    \int_{C}\frac{2z}{z^{2}-1}dz
+                    -\int_{\Delta_{\epsilon_{-}}}\frac{2z}{z^{2}-1}dz
+                    -\int_{\Delta_{\epsilon_{+}}}\frac{2z}{z^{2}-1}dz
+                    = 0
+                \end{align*}
+                <!--
+                <img src="{{asset('img/path.jpg')}}">
+                -->
+                <p>
+                    ゆえに次式を得る．
+                    \begin{align*}
+                        \int_{C}\frac{2z}{z^{2}-1}dz &=
+                        \int_{\Delta_{\epsilon_{-}}}\frac{2z}{z^{2}-1}dz
+                        +\int_{\Delta_{\epsilon_{+}}}\frac{2z}{z^{2}-1}dz\\
+                        &=
+                        i\int_{0}^{2\pi}\frac{2(-1 + \epsilon e^{it})}{-2 + \epsilon e^{it}}dt + 
+                        i\int_{0}^{2\pi}\frac{2(1 + \epsilon e^{it})}{2 + \epsilon e^{it}}dt\\
+                        &=
+                        4\pi i   
+                    \end{align*}
+                </p>
+            <p>END</p>
+        </div>
+        <div class="section">
+            <h3>原始関数の存在，単連結領域</h3>
+            <p>補題6</p>
+            <p>
+                領域$\mathscr{D}$で連続な関数f(z)に対し，次の3条件は同値
+                となります．
+            </p>
+            <p>
+                \begin{align*}
+                    &(i)\mathscr{D}で正則な関数F(z)があり，F^{'}(z)=f(z)が
+                    \mathscr{D}において成立する．\\
+                    &(ii)\mathscr{D}内の任意の2点z_{1},z_{2}と，z_{1}からz_{2}
+                    にいたる\mathscr{D}内の任意の2正則曲線C_{1},C_{2}に対し，\\
+                    &\int_{C_{1}}f(z)dz=\int_{C_{2}}f(z)dzが成立する．\\
+                    &(iii)\mathscr{D}内の任意の正則閉曲線Cに対し\int_{C}f(z)dz=0
+                    が成立する．
+                \end{align*}
+            </p>
+            <p>証明</p>
+            <p>
+                [(i)$\Rightarrow$(ii)]
+            </p>
+            <p>
+                曲線$C:z = z(t)(\alpha \leq t \beta)$に対し次の積分を計算します．
+                    \begin{align*}
+                        \int_{C}f(z)dz &= \int_{\alpha}^{\beta}f(z(t))z^{'}(t)dt\\
+                        &=
+                        \int_{\alpha}^{\beta}F^{'}(z(t))dt\\
+                        &=
+                        F(\beta) - F(\alpha)
+                    \end{align*}
+            </p>
+            <p>
+                この事から，積分は始点，終点のFの値で決まる事が分かる．
+            </p>
+            <p>
+                [(ii) $\Rightarrow$ (iii)]
+            </p>
+            <p>
+                始点を$\alpha$,終点を$\beta$とする二つの曲線$C_{1},C_{2}$
+                とする曲線を考える．すると仮定より次式が成り立つ．
+                \begin{align*}
+                    \int_{C_{1}}f(z)dz = \int_{C(2)}f(z)dz 
+                \end{align*}
+            </p>
+            <p>
+                ゆえに，次式が成り立つ．
+                \begin{align*}
+                    \int_{C_{1}}f(z)dz - \int_{C(2)}f(z)dz &=
+                    \int_{C_{1} \backslash C_{2}}f(z)dz\\
+                    &=\int_{C}f(z)dz
+                \end{align*}
+            </p>
+            <p>
+                [(iii) $\Rightarrow$ (i)]
+            </p>
+            <p>
+                始点を$z_{0}$，終点を$z_{0} + dz$となる無限小の線分C:$z(t) = z_{0} + t dz 
+                (0 \leq t \leq 1)$
+            </p>
+            <p>Q.E.D.</p>
         </div>
     </div>
     

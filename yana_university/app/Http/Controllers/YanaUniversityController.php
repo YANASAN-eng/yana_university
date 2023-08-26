@@ -11,6 +11,8 @@ use App\Models\Book;
 use App\Models\Chapter;
 use App\Models\Section;
 use App\Http\Requests\BgmRequest;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class YanaUniversityController extends Controller
 {
@@ -33,7 +35,7 @@ class YanaUniversityController extends Controller
             'id' => $id,
             'bgm_name' => $request->bgm_name,
             'category_id' => Category::where('category_name','=',$request->bgm_category)->first()->id,
-            'bgm_url' => explode("?v=",$request->bgm_url)[1],
+            'bgm_url' => explode("v=",$request->bgm_url)[1],
         ]);
         return redirect('bgm');
     }
@@ -186,6 +188,17 @@ class YanaUniversityController extends Controller
             ->first()->id)->get();
         $sections = Section::get();
         return view('math.combinatorics',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //コーヒーブレイク
+    public function mathCoffeeBreakShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','コーヒーブレイク')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('math.coffee_break',[
             'chapters' => $chapters,
             'sections' => $sections,
         ]);
@@ -348,6 +361,32 @@ class YanaUniversityController extends Controller
             'sections' => $sections,
         ]);
     }
+    //python_linear
+    public function pythonLinearShow(Request $request){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','python')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.python_linear',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+            'row' => $request->row,
+            'column' => $request->column,
+        ]);
+    }
+    //python_linear_output/
+    public function pythonLinearOutput(Request $request){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','python')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.python_linear_output',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+            'row' => $request->row,
+            'column' => $request->column,
+        ]);
+    }
     //HTML&CSS
     public function htmlCssShow(){
         $chapters = Chapter::where('book_id','=',
@@ -388,6 +427,50 @@ class YanaUniversityController extends Controller
             ->first()->id)->get();
         $sections = Section::get();
         return view('programming.laravel',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //コンパイラ設計技法
+    public function CompilerShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','コンパイラ設計技法')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.compiler',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //docker
+    public function dockerShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','docker')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.docker',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //language
+    public function makingLanguageShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','プログラミング言語を自作しよう')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.making_language',[
+            'chapters' => $chapters,
+            'sections' => $sections,
+        ]);
+    }
+    //情報基礎論
+    public function informationShow(){
+        $chapters = Chapter::where('book_id','=',
+            Book::where('book_name','=','情報基礎論')
+            ->first()->id)->get();
+        $sections = Section::get();
+        return view('programming.information',[
             'chapters' => $chapters,
             'sections' => $sections,
         ]);

@@ -97,12 +97,12 @@ class DatasController extends Controller
         ->delete();
         for($i = 1;$i <= $length;$i++){
             if($i <= $id){
-                continued;
+                continue;
             }else{
                 DB::table("books")
                 ->where('id',$i)
                 ->update([
-                    'id' => $id - 1,
+                    'id' => $i - 1,
                 ]);
             }
         }
@@ -117,12 +117,12 @@ class DatasController extends Controller
         ->delete();
         for($i = 1;$i <= $length;$i++){
             if($i <= $id){
-                continued;
+                continue;
             }else{
                 DB::table("chapters")
                 ->where('id',$i)
                 ->update([
-                    'id' => $id - 1,
+                    'id' => $i - 1,
                 ]);
             }
         }
@@ -140,12 +140,12 @@ class DatasController extends Controller
         ->delete();
         for($i = 1;$i <= $length;$i++){
             if($i <= $id){
-                continued;
+                continue;
             }else{
                 DB::table("sections")
                 ->where('id',$i)
                 ->update([
-                    'id' => $id - 1,
+                    'id' => $i - 1,
                 ]);
             }
         }
