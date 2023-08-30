@@ -1,0 +1,2 @@
+誤差伝搬法資料1
+https://hogetech.info/deep-learning/dl-basic3

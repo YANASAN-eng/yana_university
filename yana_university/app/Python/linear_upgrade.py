@@ -287,7 +287,7 @@ class Linear:
     def eigenvalue(cls,A):
         B = A
         eigenvalue = []
-        N = 15
+        N = 30
         for i in range(N):
             B = cls.times(cls.QR(B)[1],cls.QR(B)[0])
         for i in range(len(A)):

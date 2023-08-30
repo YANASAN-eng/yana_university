@@ -1,43 +1,3 @@
-@extends('layouts.lesson_template')
-
-@section('title','python')
-
-@section('style')
-
-@endsection
-@section('sentences')
-    <div class="chapter">
-        <h1>線形代数</h1>
-        <div class="input_linear_form">
-            <form id="type_of_matrix"action="{{url('/programming/python/linear')}}"method="get">
-                @csrf
-                <table>
-                    <tr>
-                        <th>行列の行数</th>
-                        <td><input name="row"type="text"placeholder="行列の行数を入力してください．"></td>
-                    </tr>
-                    <tr>
-                        <th>行列の列数</th>
-                        <td><input name="column"type="text"placeholder="行列の列数を入力してください．"></td>
-                    </tr> 
-                </table>
-                <input type="submit"value="行列の型を入力"style="font-wight:bold;background-color:rgba(255,0,0,0.6);">
-            </form>
-            @yield('type_of_matrix')
-        </div>
-    </div>
-    <div class="chapter">
-        <h1>スクレイピング</h1>
-    </div>
-    <div class="chapter">
-        <h1>機械学習</h1>
-        <h2>
-            下記はバックプロパゲーションに関する
-            簡単なコードです．
-        </h2>
-        <div style="overflow:scroll;height:300px;background-color:white;">
-            <pre>
-                <code style="font-size:16px;font-weight:bold;">
 import analysis as ana
 import numpy as np
 import math
@@ -247,6 +207,7 @@ class Learning:
                     row.append(sum)
                     sum = 0
                 matrix.append(row)
+                row = []
             tensor.append(matrix)
             matrix = []
         return tensor
@@ -261,29 +222,30 @@ class Learning:
         weights_layer = []
         #z_0,z_1,z_2,...z_n,z_{n + 1}
         z_column = []
-        z_column.append(z)
+        z_column.append(z) #z_column[0]は入力
         #z_1,z_2,...,z_n取得
         n = len(weights)
         for k in range(n):
             weights_layer.append(weights[k])
             z_column.append(cls.neuralnetwork(z_column[0],f,weights_layer[k]))
         #z_{n + 1}取得
-        z_column.append(cls.output(z_column[n],W))
+        z_column.append(cls.output(z_column[n],W)) #z_column[n + 1]は出力
         #\frac{\partial E}{\partial output}
         dEdz_output = cls.dEdz_output(z_column[n + 1],z_correct)
         #\frac{\partial z_{p}^{k}}{\partial z_{q}^{k - 1}}
-        #k = n,n-1,...,0である事に注意
+        #k = n,n-1,...,0
         dzdzs = []
         for k in range(n + 1):
             if(k == 0):
-                dzdzs.append(W)
+                dzdzs.append(W) #\frac{\partial z_{n+1}}{\partial z_{n}}
             else:
-                dzdzs.append(cls.dzdz(z_column[n - k],f,weights[n - k]))
+                #Wの添え字とz_columnの添え字は1ずれて居ることに注意
+                dzdzs.append(cls.dzdz(z_column[n - k],f,weights[n - k])) #\frac{\partial z_{n+1-k}}{\partial z_{n-k}}      
         #\frac{\partial z_{p}^{k}}{\partial W_{pq}^{k}}
         dzdWs = []
         for k in range(n + 1):
             if(k == 0):
-                dzdWs.append(cls.dzdW(z_column[n],cls.I,W))
+                dzdWs.append(cls.dzdW(z_column[n],cls.I,W)) #出力に関する重み
             else:
                 dzdWs.append(cls.dzdW(z_column[n - k],f,weights[n - k]))
         #\frac{\partial E}{\partial W_{pq}^{k}}
@@ -293,12 +255,13 @@ class Learning:
         sum = 0
         temp_1 = []
         temp_2 = dEdz_output
+        count = 0
         for k in range(n + 1):
             if(k == 0):
                 for p in range(len(W)):
                     for q in range(len(W[0])):
-                        for a in range(len(z_column[len(z_column[0])])):
-                            sum = sum + dzdWs[k][a][p][q] * dEdz_output[a]
+                        for a in range(len(z_column[n + 1])):
+                            sum = sum + dzdWs[k][a][p][q] * dEdz_output[a] #出力部分の重み
                         row.append(sum)
                         sum = 0
                     matrix.append(row)
@@ -308,14 +271,14 @@ class Learning:
             else:
                 temp_1 = temp_2
                 temp_2 = []
-                for b in range(len(z_column[n - k])):
-                    for a in range(len(z_column[n + 1 - k])):
-                        sum = sum + dzdzs[k][a][b] * temp_1[a]
+                for b in range(len(z_column[n + 1 - k])):
+                    for a in range(len(z_column[n + 2 - k])):
+                        sum = sum + dzdzs[k - 1][a][b] * temp_1[a]
                     temp_2.append(sum)
                     sum = 0
                 for p in range(len(weights[n - k])):
                     for q in range(len(weights[n - k][0])):
-                        for a in range(len(z_column[n - k])):
+                        for a in range(len(z_column[n + 1 - k])):
                             sum = sum + dzdWs[k][a][p][q] * temp_2[a]
                         row.append(sum)
                         sum = 0
@@ -324,21 +287,23 @@ class Learning:
                 dEdWs.append(matrix)
                 matrix = []
         #重み更新
+        #0,1,2,...,n
+        #n,n-1,...,1,0
         param = 0.001
         weights_layer.append(W)
         for k in range(n + 1):
             for p in range(len(weights_layer[k])):
                 for q in range(len(weights_layer[k][0])):
-                    weights_layer[n - k][p][q] = weights_layer[n - k][p][q] - param * dEdWs[k][p][q]
+                    weights_layer[k][p][q] = weights_layer[k][p][q] - param * dEdWs[n - k][p][q]
         write_weights = {'weights':weights_layer}
-        with open('./temporarily_saved/preservation.json','w') as f:
+        with open('./temporarily_saved/after_learning.json','w') as f:
             json.dump(write_weights,f,indent=4)
-        print('重みの更新が完了しました．')
-                </code>
-            </pre>
-        </div>
-    </div>
-@endsection
-
-@section('script')
-    
+    #############################################
+    #############################################
+    #お試し非線形関数
+    def function(x):
+        return math.tanh(x)
+    def pow(x):
+        return x**3
+    def nonlinear_fit(x):
+        return 10 * math.sin(x)

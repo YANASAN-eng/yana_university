@@ -1,0 +1,126 @@
+############################################################################
+    #\frac{\partial z_{p}^{k}}{\partial W_{rq}^{k}}
+    ############################################################################
+    @classmethod
+    def dzdW(cls,z,fs,W):
+        tensor = []
+        matrix = []
+        row = []
+        sum = 0
+        epsilon = 0.001
+        for p in range(len(W)):
+            for q in range(len(W)):
+                for r in range(len(W[0])):
+                    if(p == q):
+                        row.append(0)
+                    else:
+                        for j in range(len(W[0])):
+                            sum = sum + W[p][j] * z[j]
+                        sum = z[r] * ana.derivative(fs[p],sum,epsilon)
+                        row.append(sum)
+                        sum = 0
+                matrix.append(row)
+                row = []
+            tensor.append(matrix)
+    ##########################################################################
+    #matrix^{i}_{j} * vector_{i} 添字iについてはEinstein縮約をとる．
+    ############################################################################
+    @classmethod
+    def inner_product1(cls,matrix,vector):
+        u = []
+        sum = 0
+        for j in range(len(matrix[0])):
+            for i in range(len(matrix)):
+                sum = sum + matrix[i][j] * vector[i]
+            u.append(sum)
+            sum = 0
+        return u
+    ##############################################################################
+    #tensor^{i}_{jk} * vector_{i} 添字iについてはEinstein縮約をとる．
+    ##########################################################################
+    @classmethod
+    def inner_product2(tensor,vector):
+        matrix = []
+        row = []
+        sum = 0
+        for p in range(len(tensor[0])):
+            for q in range(len(tensor[0][0])):
+                for j in range(len(tensor)):
+                    sum = sum + tensor[j][p][q] * vector[j]
+                row.append(sum)
+                sum = 0
+            matrix.append(row)
+            row = []
+        return matrix
+    ################################################################################
+    #\frac{\partial E}{\partial W_{pq}^{k}}
+    #格納される順番は降順であることに注意
+    ####################################################################################
+    @classmethod 
+    def dEdWs(cls,z,z_correct,f_weights):
+        num = len(f_weights)
+        z_column = []
+        dEdz_output = []
+        dzdzs = []
+        dzdWs = []
+        dEdWs = []
+        temp = []
+        z_column.append(z) #z_column[0]=input
+        #input = z_0 to z_1 to z_2 to ... to z_n = output
+        for n in range(num):
+            z_column.append(cls.neuralnetwork(z_column[n],f_weights[n]))
+        dEdz_output = cls.dEdz_output(z_column[num],z_correct)
+        for n in num:
+            dzdzs.append(cls.dzdz(z_column[n],f_weights[n][0],f_weights[n][1]))
+        for n in num:
+            dzdWs.append(cls.dzdW(z_column[n],f_weights[n][0],f_weights[n][1]))
+        temp = dEdz_output
+        #######################################################################
+        for n in range(num):
+            if(n == 0):
+                dEdWs.append(cls.inner_product2(dzdWs[(num - 1)]),dEdz_output)
+            else:
+                temp = cls.inner_product1(dzdzs[(num - n)],temp)
+                dEdWs.append(cls.inner_product2(dzdWs[(num - 1)]),temp)
+        return dEdWs
+    ################################################################################
+    #重みの更新(データのフィッティング)
+    #############################################################################
+    @classmethod
+    def dEdWs_fit(cls,zs,z_corrects,f_weights):
+        num = len(f_weights)
+        tensor = []
+        matrix = []
+        row = []
+        sum = 0
+        for k in range(num):
+            for p in range(len(f_weights[(num - 1) - k][1])):
+                for q in range(len(f_weights[(num - 1) - k][1][0])):
+                    for n in range(len(zs)):
+                        sum = sum + cls.dEdWs(zs[n],z_corrects[n],f_weights)[k][p][q]
+                    sum = sum / n
+                    row.append(sum)
+                    sum = 0
+                matrix.append(row)
+                row = []
+            tensor.append(matrix)
+            matrix = []
+        return tensor
+    ###############################################################################
+    #パラメータ変更
+    #################################################################################
+    @classmethod
+    def implovement(cls,zs,z_corrects,f_weights):
+        dEdWs = cls.dEdWs_fit(zs,z_corrects,f_weights)
+        num = len(zs)
+        weights = []
+        for k in range(num):
+            weights.append(f_weights[k][1])
+        param = 0.001
+        for k in range(num):
+            for p in range(weights[(num - 1) - k]):
+                for q in range(weights[(num - 1) - k][0]):
+                    weights[(num - 1) - k][p][q] = weights[(num - 1) - k][p][q] - param * dEdWs[k][p][q]
+        weight_datas = {"weights":weights}
+        with open('./temporarily_saved/learning.json','w') as f:
+            json.dump(weight_datas,f,indent="4")
