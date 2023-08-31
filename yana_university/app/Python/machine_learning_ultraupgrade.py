@@ -65,7 +65,7 @@ class Learning:
             z_correct = [z_correct]
         dEdz_output = []
         for p in range(len(z_output)):
-            dEdz_output.append(2 * z_output[p] * (z_output[p] - z_correct[p]) / len(z_output))
+            dEdz_output.append(2 *  (z_output[p] - z_correct[p]) / len(z_output))
         return dEdz_output
     ############################################################################
     #\frac{\partial z_{p}^{k}}{\partial z_{q}^{k - 1}}
@@ -230,7 +230,12 @@ class Learning:
         return x ** 2
     def pow3(x):
         return x ** 3             
-
+    def pow4(x):
+        return x ** 4
+    def pow5(x):
+        return x ** 5  
+    def pow6(x):
+        return x ** 6   
 
 
 
