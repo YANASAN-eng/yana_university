@@ -1,0 +1,206 @@
+*{
+  box-sizing:border-box;
+}
+/*
+  デバイス非依存部分に関する記述
+*/
+body {
+  width: 100%;
+  background-color: rgba(0,150,255,0.6);
+  overflow-x: hidden;
+}
+header{
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  top:0;
+  left:0;
+  background-color:#000000cc;
+  z-index: 1;
+}
+.header-logo {
+  height: 100%;
+  width: 30%;
+}
+.header-logo img {
+  height: 100%;
+  width: 100%;
+}
+.account-image {
+  height: 100%;
+  width:10%;
+}
+.account-image img {
+  height: 100%;
+}
+#check {
+  display: none;
+}
+.main-wrapper {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+footer {
+  height: 70px;
+  width: 100%;
+  position:fixed;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  left: 0;
+  background-color:#000000cc;
+}
+.footer-logo {
+  height: 100%;
+  width: 30%;
+}
+.footer-logo img {
+  height: 100%;
+  width: 100%;
+}
+.back:hover {
+  cursor: pointer;
+}
+.home:hover {
+  cursor: pointer;
+}
+.error-message {
+  color: red;
+}
+button.logout {
+  padding: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: white;
+  background: none
+}
+button.logout:hover {
+  cursor: pointer;
+}
+
+/*
+  1280px以上の幅があるデバイスに関する記述
+*/
+@media screen and (min-width: 1280px) {
+  .header-menus-wrapper {
+    width: 50%;
+    height: 100%;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  .header-menus {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+  }
+  .header-menu a {
+    text-decoration: none;
+    color: white;
+  }
+  .header-menu a:hover {
+    color: whitesmoke;
+  }
+  .hamburger-menu {
+    display: none;
+  }
+  .side-menus {
+    display:none;
+  }
+  .footer-logo {
+    height: 100%;
+    width: 30%;
+  }
+  .footer-logo img {
+    height: 100%;
+    width: 100%;
+  }
+  .footer-menus-wrapper {
+    width: 50%;
+    height: 100%;
+  }
+  .footer-menus {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+  }
+  .footer-menu {
+    text-decoration: none;
+    color: white;
+  }
+  .logout {
+    display: block;
+  }
+}
+@media screen and (max-width:1280px) {
+  .header-menus-wrapper {
+    display: none;
+  }
+  .gap {
+    width: 30%;
+    height: 70px;
+  }
+  #hamburger-menu {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    top: 25px;
+    right: 10px;
+    z-index: 9999;
+  }
+  #hamburger-menu .bar {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+  }
+  .bar.active0 {
+    display: none !important;
+  }
+  .bar.active1 {
+    translate: 0 7.5px;
+    transform: rotate(45deg);
+  }
+  .bar.active2 {
+    translate: 0 -7.5px;
+    transform: rotate(-45deg);
+  }
+  #side-menus {
+    width: 200px;
+    height: 100%;
+    padding-top: 80px;
+    position: absolute;
+
+    top: 0;
+    right: -200px;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  #side-menus.active{
+    width: 200px;
+    height: 100%;
+    padding-top: 80px;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .side-menus {
+    list-style: none;
+    text-decoration: none;
+  }
+  .side-menu{
+    text-decoration: none;
+    color: white;
+  }
+  .footer-menus {
+    display: none;
+  }
+}

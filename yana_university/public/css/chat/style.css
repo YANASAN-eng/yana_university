@@ -1,0 +1,109 @@
+body {
+    height: 100vh;
+}
+.main-wrapper {
+    height: 100%;
+}
+.contents-wrapper {
+    height: 100%;
+}
+#app {
+    height: 100%;
+    width: 100%;
+}
+.chat-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.client-wrapper {
+    width: 50%;
+    height: 100%;
+}
+.client-log {
+    height: 90%;
+    width: 100%;
+    background-color: turquoise;
+    overflow-y: scroll;
+}
+.button-wrapper {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.comment-button {
+    height: 100%;
+    width: 20%;
+    display: block;
+    background-color: black;
+    color: white;
+}
+.comment-button:hover {
+    cursor: pointer;
+    background-color: gray;
+}
+#comment {
+    height: 100%;
+    width: 80%;
+    display: block;
+}
+.response-log-wrapper {
+    width: 50%;
+    height: 100%;
+}
+.response-log {
+    width: 100%;
+    height: 100%;
+    background-color: goldenrod;
+    border-radius: black;
+    overflow-y: scroll;
+}
+.client-comment p {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 0 10px;
+    color: whitesmoke;
+    overflow-wrap: break-word;
+    width: 90%;
+    position: relative;
+    background-color: purple;
+    border-radius: 10px;
+}
+
+.client-comment {
+    margin-top: 10px;
+    color:black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.client-comment img{
+    display: inline-block;
+    width: 10%;
+    height: 10%;
+}
+.ai-comment {
+    color: white;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.ai-comment img {
+    display: inline-block;
+    width: 10%;
+    height: 10%;
+}
+.ai-comment p {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 0 10px;
+    color: whitesmoke;
+    overflow-wrap: break-word;
+    width: 90%;
+    position: relative;
+    background-color: green;
+    border-radius: 10px;
+}
+
