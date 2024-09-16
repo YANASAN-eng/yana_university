@@ -41,3 +41,21 @@ services:
     image: voicevox/voicevox_engine:latest
     ports:
       - 50021:50021
+  python:
+    container_name: 'python'
+    build:
+      context: ./docker/python
+    volumes: 
+      - ./resources/py:/usr/src/app
+    command: tail -f /dev/null
+    working_dir: /usr/src/app
+    ports:
+      - 8900:8900
+  java:
+    build: ./docker/java
+    ports:
+      - 8089:8089
+    tty: true
+    volumes:
+      - ./resources/java:/usr/src:cached
+    working_dir: /usr/src

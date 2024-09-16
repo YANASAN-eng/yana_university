@@ -17,3 +17,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+personality.txt
+eng.dic
+/resources/py/

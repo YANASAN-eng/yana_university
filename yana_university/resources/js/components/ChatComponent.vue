@@ -32,7 +32,7 @@ export default {
             requests: [],
             responses: [],
             profile_image: '',
-            speaker: 1,
+            speaker: 46,
             audio_query: '',
             audio_temp_path: '../../audio'
         };
@@ -66,16 +66,20 @@ export default {
             })
         },
         getQueryVoiceVox: function(text) {
-            axios.post(`http://localhost:50021/audio_query?text=${encodeURIComponent(text)}&speaker=${this.speaker}`,
+            axios.post('http://localhost:8900/convert',
+            {
+                text: text,
+                speaker: this.speaker
+            },
             {
                 headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+
                 }
             }
             ).then((response) => {
-                this.audio_query = response.data
-                console.log(response.data)
+                this.audio_query = response.data.query
                 this.playQuery()
             }).catch((error) => {
                 console.error(error)

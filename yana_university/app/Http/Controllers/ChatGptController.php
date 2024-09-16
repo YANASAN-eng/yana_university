@@ -32,6 +32,15 @@ class ChatGptController extends Controller
         $api_key = config('services.openai.api_key');
         $url = 'https://api.openai.com/v1/chat/completions';
 
+        $personality_path = base_path('personality.txt');
+
+        if (!file_exists($personality_path)) {
+            Log::error('personality.txtが見つかりません');
+            return redirect()->json(['error' => '性格設定ファイルが見つかりません'], 500);
+        }
+
+        $personality = file_get_contents($personality_path);
+
         try {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $api_key,
@@ -39,6 +48,10 @@ class ChatGptController extends Controller
             ])->post($url, [
                 'model' => 'gpt-3.5-turbo',
                 'messages' => [
+                    [
+                        'role' => 'system',
+                        'content' => $personality,
+                    ],
                     [
                         'role' => 'user',
                         'content' => $request->input('text'),
