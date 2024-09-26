@@ -4,6 +4,7 @@
 
 @section('style')
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href=" {{ asset('css/addmin/inspection/style.css') }} ">
     @vite(['resources/js/app.js'])
 @endsection
 

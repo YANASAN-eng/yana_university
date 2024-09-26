@@ -30,7 +30,7 @@
                         <td>
                             <form :action="`/addmin/delete/product/${product.id}`" method="POST">
                                 <input type="hidden" name="_token" :value="csrfToken">
-                                <input type="submit" value="削除">
+                                <input onclick="return confirm('本当にこの商品を削除しますか？')" type="submit" value="削除">
                             </form>
                         </td>
                     </tr>

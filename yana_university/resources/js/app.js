@@ -30,6 +30,9 @@ app.component('product-show-component', ProductShowComponent);
 import ChatComponent from './components/ChatComponent.vue';
 app.component('chat-component', ChatComponent);
 
+import MapComponent from './components/map/main.vue';
+app.component('map-component', MapComponent);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

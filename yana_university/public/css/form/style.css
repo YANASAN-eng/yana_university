@@ -1,0 +1,40 @@
+.form-wrapper {
+    text-align: center;
+}
+#form {
+    display: inline-block;
+    background-color: black;
+}
+.column-item1 {
+    color: whitesmoke;
+}
+.column-item2 input{
+    width: 80%;
+    display: inline-block;
+}
+label {
+    color: white;
+}
+.back[type=button] {
+    color: white;
+    background-color: tomato;
+    width: 100%;
+}
+.back[type=button]:hover {
+    background-color: red;
+}
+input[type=submit] {
+    color: azure;
+    background-color: skyblue;
+    width: 100%;
+}
+input[type=submit]:hover {
+    background-color: blue;
+    cursor: pointer;
+}
+input[type=file] {
+    background-color:white;
+    color: black;
+    display: inline-block;
+    margin-bottom: 10px;
+}

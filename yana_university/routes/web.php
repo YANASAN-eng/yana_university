@@ -1,8 +1,8 @@
 <?php
 include base_path('routes/endpoints.php');
-include base_path('routes/paginates.php');
 include base_path('routes/credit.php');
 include base_path('routes/chatgpt.php');
+include base_path('routes/map.php');
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +31,10 @@ Route::middleware(['common.variable'])->group(function() {
     Route::group(['prefix' => 'signup', 'as' => 'signup.'], function() {
         //　登録画面表示
         Route::get('/', 'App\Http\Controllers\AuthController@signUpShow')->name('show');
+        // 登録確認
+        Route::post('/confirm', 'App\Http\Controllers\AuthController@signUpConfig')->name('config');
+        // 戻る際画像を消す
+        Route::post('/delete', 'App\Http\Controllers\AuthController@deleteImage')->name('return');
         // 登録実行
         Route::post('/execution', 'App\Http\Controllers\AuthController@signUpExecution')->name('execution');
     });
@@ -46,8 +50,6 @@ Route::middleware(['common.variable'])->group(function() {
             Route::get('/user', 'App\Http\Controllers\AddminController@userManagement')->name('user');
             // 商品管理画面
             Route::get('/product', 'App\Http\Controllers\AddminController@productManagement')->name('product');
-            // 講義リンク画面
-            Route::get('/lecture', 'App\Http\Controllers\LectureController@lectureShow')->name('lecture');
             // 登録系
             Route::group(['prefix' => '/registration', 'as' => 'registration.'], function() {
                 // ユーザー登録画面
@@ -75,7 +77,7 @@ Route::middleware(['common.variable'])->group(function() {
                 // 商品編集画面
                 Route::get('/product/{id}', 'App\Http\Controllers\AddminController@productEditShow')->name('product');
                 // 商品編集実行
-                Route::post('/user/execution', 'App\Http\Controllers\AddminController@ProductExecution')->name('product.execution');
+                Route::post('/product/execution', 'App\Http\Controllers\AddminController@ProductExecution')->name('product.execution');
             });
             // 削除系
             Route::group(['prefix' => '/delete', 'as' => 'delete.'], function() {
@@ -84,8 +86,6 @@ Route::middleware(['common.variable'])->group(function() {
             });
         });
     });
-    // 講義資料目次表示
-    Route::get('/lecture', 'App\Http\Controllers\LectureController@lectureShow')->name('lecture');
     // プログラミング関連
     Route::group(['prefix' => '/programming', 'as' => 'programming.'], function() {
         // 項目表示
@@ -98,6 +98,6 @@ Route::middleware(['common.variable'])->group(function() {
         }); 
     });
     // 会話チャット
-    Route::get('/chatAI', 'App\Http\Controllers\ChatGptController@chataiShow')->name('voicevox');
+    Route::get('/chatAI', 'App\Http\Controllers\ChatGptController@chataiShow')->name('chatAI');
 })
 ?>

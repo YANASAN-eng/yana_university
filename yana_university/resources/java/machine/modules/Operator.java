@@ -309,6 +309,7 @@ public class Operator {
         Node[] result = new Node[W[0].length];
         try {
             result = affine(x, W, b);
+            System.out.println("result[0].ID:" + result[0].id);
             for (int i = 0; i < fs.size(); i++) {
                 result[i] = fs.get(i).apply(result[i]);
             }
@@ -330,14 +331,14 @@ public class Operator {
         for (int i = 0; i < layers.length + 1; i++) {
             Node[] temp;
             if (i == 0) {
-                temp = x;
+                list.add(x);
             } else {
                 temp = new Node[layers[i - 1].W[0].length];
                 for (int j = 0; j < layers[i - 1].W[0].length; j++) {
                     temp[j] = new Node();
                 }
+                list.add(temp);
             }
-            list.add(temp);
         }
         for (int i = 0; i < layers.length; i++) {
             list.set(i + 1, layer(list.get(i), layers[i].W, layers[i].b, layers[i].fs));

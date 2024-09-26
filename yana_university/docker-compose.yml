@@ -59,3 +59,16 @@ services:
     volumes:
       - ./resources/java:/usr/src:cached
     working_dir: /usr/src
+  rstudio:
+    build: ./docker/R
+    image: tidyverse:3.6.3_jp
+    container_name: rstudio
+    environment: 
+      - PASSWORD=87387
+    ports:
+      - 8787:8787
+    volumes:
+      - ./resources/R:/home/rstudio
+    tty: true
+    stdin_open: true
+    working_dir: /home/rstudio

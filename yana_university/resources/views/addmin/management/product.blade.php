@@ -1,16 +1,14 @@
-@extends('layouts.frame')
+@extends('layouts.commonPortal')
 
 @section('title', '商品管理ページ')
 
-@section('contents')
-<div class="url-list-wrapper">
-    <ul class="url-list">
-        <li class="url">
-            <a href="{{ route('addmin.inspection.product') }}">商品一覧</a>
-        </li>
-        <li class="url">
-            <a href="{{ route('addmin.registration.product') }}">商品登録</a>
-        </li>
-    </ul>
+@section('introductionTitle', '商品管理ページ')
+
+@section('items')
+<div class="item">
+    <a href="{{ route('addmin.inspection.product') }}">商品一覧</a>
+</div>
+<div class="item">
+    <a href="{{ route('addmin.registration.product') }}">商品登録</a>
 </div>
 @endsection

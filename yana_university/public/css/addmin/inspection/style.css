@@ -1,0 +1,17 @@
+td a {
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: black;
+    border: 1px solid black;
+}
+td a:hover {
+
+}
+td input[type=submit] {
+    color: whitesmoke;
+    background-color: orangered;
+}
+td input[type=submit]:hover {
+    background-color: red;
+    cursor: pointer;
+}

@@ -1,0 +1,23 @@
+.main-wrapper {
+    text-align: center;
+}
+.transitions {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item {
+    margin-bottom: 30px;
+    width: 300px;
+}
+.item:nth-child(odd) {
+    background-color: tomato;
+}
+.item:nth-child(even) {
+    background-color: purple;
+}
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}

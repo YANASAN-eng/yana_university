@@ -49,4 +49,18 @@ public class Layer {
             this.fs.add(f);
         }
     }
+    public void showChildren() {
+        for (int i = 0; i < this.W.length; i++) {
+            for (int j = 0; j < this.W[0].length; j++) {
+                for (Node child : this.W[i][j].children) {
+                    System.out.println("W[" + i + "][" + j + "]: " + child.id);
+                }
+            }
+        }
+        for (int i = 0; i < this.b.length; i++) {
+            for (Node child : this.b[i].children) {
+                System.out.println("b[" + i + "]: " +  child.id);
+            }
+        }
+    }
 }

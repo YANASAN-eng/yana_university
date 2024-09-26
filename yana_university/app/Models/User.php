@@ -56,7 +56,6 @@ class User extends Authenticatable
     }
     /**
      * リクエストデータを登録
-     * 
      * @param AuthRequest $request
      * @return void
      */
@@ -67,7 +66,24 @@ class User extends Authenticatable
             "email" => $request->email,
             "password" => bcrypt($request->password),
             "role" => "0",
-            "profile_image" => basename($request->file('profile_image')->store('profiles', 'public')),
+            "profile_image" => basename($request->file('profile_image')->store('profile_images', 'public')),
+        ]);
+    }
+    /**
+     * リクエストデータを登録
+     * 
+     * @param AuthRequest $request
+     * @param session
+     * @return void
+     */
+    public function InsertUserSignup($request, $profile_image_path)
+    {
+        return $this->create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => bcrypt($request->password),
+            "role" => "0",
+            "profile_image" => basename($profile_image_path),
         ]);
     }
     /**

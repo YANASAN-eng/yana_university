@@ -2,10 +2,14 @@
 
 @section('title', '商品編集画面')
 
+@section('style')
+<link rel="stylesheet" href="{{ asset('css/form/style.css') }}">
+@endsection
+
 @section('form')
-<form action="{{ route('addmin.edit.product.execution') }}" method="POST" enctype="multipart/form-data">
+<form id="form" action="{{ route('addmin.edit.product.execution') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="row">
+    <div class="row-item">
         <div class="column1">
             <label for="name">名前</label>
         </div>
@@ -18,7 +22,7 @@
             </div>
         @endif
     </div>
-    <div class="row">
+    <div class="row-item">
         <div class="column1">
             <label for="price">値段</label>
         </div>
@@ -31,7 +35,7 @@
             </div>
         @endif
     </div>
-    <div class="row">
+    <div class="row-item">
         <div class="column1">
             <label for="product_image">商品画像</label>
         </div>
@@ -49,7 +53,7 @@
             <input type="submit" value="編集を実行">
         </div>
         <div class="column2">
-            <button class="back">戻る</button>
+            <button class="back" type="button">戻る</button>
         </div>
     </div>
 </form>

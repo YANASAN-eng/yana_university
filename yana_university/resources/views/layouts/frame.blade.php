@@ -22,7 +22,6 @@
                             @csrf
                             <button type="submit" class="logout">ログアウト</button>
                         </form>
-                            <a href="{{ route('stripe') }}">クレジットカード登録</a>
                         @else
                             <a href="{{ route('login.form') }}">ログイン</a>
                             <a href="{{ route('signup.show') }}">アカウント登録</a>
@@ -53,13 +52,11 @@
             <ul class="side-menus">
                 <li class="seide-menu-wrapper">
                     @if (auth()->check())
+                            <a href="{{ route('chatAI') }}" class="side-menu">華ちゃんチャット</a>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="logout">ログアウト</button>
                             </form>
-                        </li>
-                        <li class="side-menu-wrapper">
-                            <a href="{{ route('stripe') }}" class="side-menu">クレジットカード登録</a>
                         </li>
                         @if (auth()->user()->role ==1)
                             <a href="{{ route('addmin.portal') }}" class="side-menu">管理者画面</a>
@@ -78,7 +75,7 @@
         <div class="main-wrapper">
             <div class="introduction-wrapper">@yield('introduction')</div>
             <div class="contents-wrapper">@yield('contents')</div>
-            <div class="form_wrapper">@yield('form')</div>
+            <div class="form-wrapper">@yield('form')</div>
         </div>
         <footer>
             <div class="footer-logo">

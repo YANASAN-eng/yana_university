@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\User;
 use App\Models\Product;
@@ -115,7 +117,7 @@ class AddminController extends Controller
     public function userEditShow($id)
     {
         $user = User::where('id',$id)->first();
-        return view('addmin.edit.user', ['user' => $user]);
+        return view('addmin.edit.user', ['id' => $id, 'user' => $user]);
     }
     /**
      * 商品編集画面表示
@@ -136,7 +138,15 @@ class AddminController extends Controller
      */
     public function userEditExecution(UserRequest $request)
     {
-        User::upsertUser($request);
+        $profileImagePath = Auth::user()->profile_image;
+        Storage::disk('public')->delete($profileImagePath);
+        User::where('id', $request->id)
+            ->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => $request->password,
+                    'profile_image' => basename($request->file('profile_image')->store('profiles', 'public'))
+            ]);
         return redirect('/addmin/inspection/user');
     }
     /**

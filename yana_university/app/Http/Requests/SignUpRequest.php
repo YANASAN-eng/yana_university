@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SignUpRequest extends FormRequest
 {
@@ -23,8 +24,13 @@ class SignUpRequest extends FormRequest
     {
         return [
             'name' => 'required|max:30',
-            'email' => 'required|email',
-            'password' => 'required|max:50',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users'), 
+            ],
+            'password' => 'required|min:8|max:50', 
         ];
     }
 }

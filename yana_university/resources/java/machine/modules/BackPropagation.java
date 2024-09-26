@@ -16,6 +16,7 @@ public class BackPropagation {
         for (Node node : sortedList) {
             if (node.children.size() == 0) {
                 System.out.print(node.id + " ");
+                System.out.println(node.parents.get(0).id);
             }
             double totalGradient = 0;
             for (Map.Entry<Node, Double> entry : node.childSelfGradients.entrySet()) {

@@ -3,13 +3,13 @@
 @section('title', '商品登録画面')
 
 @section('style')
-
+<link rel="stylesheet" href="{{ asset('css/form/style.css') }}">
 @endsection
 
 @section('form')
-<form action="{{ route('addmin.registration.product.execution') }}" method="post" enctype="multipart/form-data">
+<form id="form" action="{{ route('addmin.registration.product.execution') }}" method="post" enctype="multipart/form-data">
     @csrf
-    <div class="row">
+    <div class="row-item">
         <div class="column_1">
             <label for="name">商品名</label>
         </div>
@@ -22,7 +22,7 @@
             </div>
         @endif
     </div>
-    <div class="row">
+    <div class="row-item">
         <div class="column_1">
             <label for="price">値段</label>
         </div>
@@ -35,7 +35,7 @@
             </div>
         @endif
     </div>
-    <div class="row">
+    <div class="row-item">
         <div class="column_1">
             <label for="product_image">画像</label>
         </div>
@@ -45,7 +45,7 @@
     </div>
     <div class="button_wrapper">
         <input type="submit" value="登録">
-        <button>戻る</button>
+        <button class="back" type="button">戻る</button>
     </div>
 </form>
 @endsection

@@ -2,10 +2,13 @@
 
 @section('title', 'ユーザー登録画面')
 
+@section('style')
+<link rel="stylesheet" href="{{ asset('css/form/style.css') }}">
+@endsection
 @section('form')
-<form action="{{ route('addmin.registration.user.execution') }}" method="POST" enctype="multipart/form-data">
+<form id="form" action="{{ route('addmin.registration.user.execution') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="row">
+    <div class="row-item">
         <div class="column1">
             <label for="name">名前</label>
         </div>
@@ -18,7 +21,7 @@
             </div>
         @endif
     </div>
-    <div class="row">
+    <div class="row-item">
         <div class="column1">
             <label for="email">メールアドレス</label> 
         </div>
@@ -31,7 +34,7 @@
             </div>
         @endif
     </div>
-    <div class="row">
+    <div class="row-item">
         <div class="column1">
             <label for="password">パスワード</labnel>
         </div>
@@ -44,7 +47,7 @@
             </div>
         @endif
     </div>
-    <div class="row">
+    <div class="row-item">
         <div class="column1">
             <label for="profile_image">アカウント画像</labnel>
         </div>
@@ -57,12 +60,12 @@
             </div>
         @endif
     </div>
-    <div class="row">
+    <div class="row-item">
         <div class="column1">
-            <button class="back">戻る</button>
+            <input type="submit" value="新規登録">
         </div>
         <div class="column2">
-            <input type="submit" value="新規登録">
+            <button class="back" type="button">戻る</button>
         </div>
     </div>
 </form>
