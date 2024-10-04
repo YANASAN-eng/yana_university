@@ -15,11 +15,14 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import UserComponent from './components/addmin/UserComponent.vue';
-app.component('user-component', UserComponent);
-
 // import StripeComponent from './components/StripeComponent.vue';
 // app.component('stripe-component', StripeComponent);
+
+import HomeComponent from './components/HomeComponent.vue';
+app.component('home-component', HomeComponent);
+
+import UserComponent from './components/addmin/UserComponent.vue';
+app.component('user-component', UserComponent);
 
 import ProductComponent from './components/addmin/ProductComponent.vue';
 app.component('product-component', ProductComponent);
@@ -33,6 +36,17 @@ app.component('chat-component', ChatComponent);
 import MapComponent from './components/map/main.vue';
 app.component('map-component', MapComponent);
 
+import LectureComponent from './components/addmin/LectureComponent.vue';
+app.component('lecture-component', LectureComponent);
+
+import FieldComponent from './components/addmin/FieldComponent.vue';
+app.component('field-component', FieldComponent);
+
+import ChapterComponent from './components/addmin/ChapterComponent.vue';
+app.component('chapter-component', ChapterComponent);
+
+import SectionComponent from './components/addmin/SectionComponent.vue';
+app.component('section-component', SectionComponent);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

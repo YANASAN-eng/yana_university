@@ -199,6 +199,62 @@ button.logout:hover {
     text-decoration: none;
     color: white;
   }
+  .acordion-title {
+    position: relative;
+    color: white;
+    width: 100%;
+    display:block;
+  }
+  .acordion-title:hover {
+    cursor: pointer;
+  }
+  .acordion-title::before {
+    content: ' ';
+    position:absolute;
+    top: 25%;
+    right: 10%;
+    height: 50%;
+    width: 2px;
+    background-color: white;
+    transform: rotate(90deg);
+  }
+  .acordion-title::after {
+    content: ' ';
+    position:absolute;
+    top: 25%;
+    right: 10%;
+    height: 50%;
+    width: 2px;
+    background-color: white;
+    transform: rotate(-90deg);
+  }
+  .acordion-title.active::before {
+    content: ' ';
+    position:absolute;
+    top: 25%;
+    right: 10%;
+    height: 50%;
+    width: 2px;
+    background-color: white;
+    transform: rotate(45deg);
+  }
+  .acordion-title.active::after {
+    content: ' ';
+    position:absolute;
+    top: 25%;
+    right: 10%;
+    height: 50%;
+    width: 2px;
+    background-color: white;
+    transform: rotate(-45deg);
+  }
+  .acordion {
+    display: none;
+  }
+  .acordion.active {
+    display: block;
+    list-style: none;
+  }
   .footer-menus {
     display: none;
   }

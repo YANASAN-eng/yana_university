@@ -23,3 +23,14 @@ hamburger_menu.addEventListener("click", function() {
     bar[2].classList.toggle('active2');
     body[0].classList.toggle('active');
 })
+
+let buttons = Array.from(document.getElementsByClassName('acordion-title'));
+let acordion = document.getElementsByClassName('acordion');
+buttons.forEach((button) => {
+    button.addEventListener('click', function() {
+        Array.from(acordion).forEach((item) => {
+            item.classList.toggle('active');
+        })
+        button.classList.toggle('active');
+    })
+})

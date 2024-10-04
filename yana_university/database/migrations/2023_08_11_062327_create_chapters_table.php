@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('book_id');
-            $table->string('chapter_name');
+            $table->bigInteger('field_id');
+            $table->string('name');
+            $table->string('url');
             $table->timestamps();
         });
     }

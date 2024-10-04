@@ -67,7 +67,14 @@
                         <li class="side-menu-wrapper"><a href="{{ route('signup.show') }}" class="side-menu">アカウント登録</a></li>
                     @endif
                 <li class="side-menu-wrapper"><a href="" class="side-menu">サイトマップ</a></li>
-                <li class="side-menu-wrapper"><a href="{{ route('programming.contents') }}" class="side-menu">プログラミング</a></li>
+                <li>
+                    <span class="acordion-title">講義</span>
+                    <ul class="acordion">
+                    @foreach ($lectures as $lecture)
+                        <li class="sidle-menu-wrapper"><a href="{{ route($lecture->url) }}" class="side-menu">{{ $lecture->name }}</a></li>
+                    @endforeach
+                    </ul>
+                </li>
                 <li class="side-menu-wrapper"><span class="side-menu back">戻る</span></li>
                 <li class="side-menu-wrapper"><span class="side-menu home">ホームページへ戻る</span></li>
             </ul>
